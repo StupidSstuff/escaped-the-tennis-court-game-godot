@@ -122,7 +122,7 @@ func _start_intro() -> void:
     pulse.tween_property(skip_label, "modulate:a", 0.35, 0.75).set_trans(Tween.TRANS_SINE)
     pulse.tween_property(skip_label, "modulate:a", 1.0, 0.75).set_trans(Tween.TRANS_SINE)
 
-    await get_tree().create_timer(intro_duration - 1.15).timeout
+    await get_tree().create_timer(max(intro_duration - 1.15, 0.1)).timeout
     if not leaving:
         _go_to_next_scene()
 
@@ -166,7 +166,7 @@ func _play_tone(frequency: float, duration: float, volume: float, delay: float) 
     var frames := int(44100.0 * duration)
     var phase := 0.0
     var step := TAU * frequency / 44100.0
-    for i in frames:
+    for i in range(frames):
         var envelope := 1.0
         if i < 900:
             envelope = float(i) / 900.0
@@ -177,7 +177,7 @@ func _play_tone(frequency: float, duration: float, volume: float, delay: float) 
         playback.push_frame(AudioFrame(sample, sample))
         phase += step
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if leaving:
         return
     glow.rotation = sin(Time.get_ticks_msec() * 0.00025) * 0.025
