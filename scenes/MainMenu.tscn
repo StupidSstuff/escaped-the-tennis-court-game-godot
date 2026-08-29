@@ -5,31 +5,19 @@
 [sub_resource type="GDScript" id="GDScript_ukcvp"]
 script/source = "extends Control
 
-func _ready() -> void:
-	var bg := ColorRect.new()
-	bg.color = Color(\"#090d18\")
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
 
-	var title := Label.new()
-	title.text = \"ESCAPE THE TENNIS COURT\"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override(\"font_size\", 38)
-	title.add_theme_color_override(\"font_color\", Color(\"#f4f7ff\"))
-	title.set_anchors_preset(Control.PRESET_CENTER)
-	title.position = Vector2(-360, -55)
-	title.size = Vector2(720, 70)
-	add_child(title)
 
-	var hint := Label.new()
-	hint.text = \"MAIN MENU\\n\\nMore coming soon...\"
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	hint.add_theme_font_size_override(\"font_size\", 20)
-	hint.add_theme_color_override(\"font_color\", Color(\"#8fa6c7\"))
-	hint.set_anchors_preset(Control.PRESET_CENTER)
-	hint.position = Vector2(-250, 10)
-	hint.size = Vector2(500, 100)
-	add_child(hint)
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/Game.tscn\")
+
+
+func _on_opinions_pressed() -> void:
+	print(\"sorry unfinished shit\")
+
+
+func _on_goodbye_and____remember_me_____though_i_have_to_say_goodbye_pressed() -> void:
+	get_tree().quit
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xd07"]
@@ -66,20 +54,24 @@ offset_right = 271.0
 offset_bottom = 158.5
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1777033763]
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=1777033763]
 layout_mode = 2
 theme_override_font_sizes/font_size = 69
 text = "Start"
 flat = true
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1373689574]
+[node name="Opinions" type="Button" parent="VBoxContainer" unique_id=1373689574]
 layout_mode = 2
 theme_override_font_sizes/font_size = 69
 text = "Options"
 flat = true
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=180905793]
+[node name="Goodbye and___ Remember me____ though i have to say goodbye" type="Button" parent="VBoxContainer" unique_id=180905793]
 layout_mode = 2
 theme_override_font_sizes/font_size = 69
 text = "Exit"
 flat = true
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Opinions" to="." method="_on_opinions_pressed"]
+[connection signal="pressed" from="VBoxContainer/Goodbye and___ Remember me____ though i have to say goodbye" to="." method="_on_goodbye_and____remember_me_____though_i_have_to_say_goodbye_pressed"]
