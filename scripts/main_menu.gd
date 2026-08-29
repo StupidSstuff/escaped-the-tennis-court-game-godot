@@ -1,0 +1,27 @@
+extends Control
+
+func _ready() -> void:
+    var bg := ColorRect.new()
+    bg.color = Color("#090d18")
+    bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    add_child(bg)
+
+    var title := Label.new()
+    title.text = "ESCAPE THE TENNIS COURT"
+    title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    title.add_theme_font_size_override("font_size", 38)
+    title.add_theme_color_override("font_color", Color("#f4f7ff"))
+    title.set_anchors_preset(Control.PRESET_CENTER)
+    title.position = Vector2(-360, -55)
+    title.size = Vector2(720, 70)
+    add_child(title)
+
+    var hint := Label.new()
+    hint.text = "MAIN MENU\n\nMore coming soon..."
+    hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    hint.add_theme_font_size_override("font_size", 20)
+    hint.add_theme_color_override("font_color", Color("#8fa6c7"))
+    hint.set_anchors_preset(Control.PRESET_CENTER)
+    hint.position = Vector2(-250, 10)
+    hint.size = Vector2(500, 100)
+    add_child(hint)
