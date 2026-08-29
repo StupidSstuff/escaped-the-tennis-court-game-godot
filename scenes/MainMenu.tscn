@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c3j6hcijd1b5r"]
 
+[ext_resource type="Texture2D" uid="uid://ci57pyppncwbl" path="res://assets/images/MainMenuBG_placeholder.png" id="1_yqorp"]
+
 [sub_resource type="GDScript" id="GDScript_ukcvp"]
 script/source = "extends Control
 
@@ -30,6 +32,9 @@ func _ready() -> void:
 	add_child(hint)
 "
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xd07"]
+texture = ExtResource("1_yqorp")
+
 [node name="MainMenu" type="Control" unique_id=52171833]
 layout_mode = 3
 anchors_preset = 15
@@ -42,3 +47,39 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ukcvp")
+
+[node name="Panel" type="Panel" parent="." unique_id=1240687098]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -11.0
+offset_right = 1148.0
+offset_bottom = 645.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3xd07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1390043736]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -158.5
+offset_right = 271.0
+offset_bottom = 158.5
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1777033763]
+layout_mode = 2
+theme_override_font_sizes/font_size = 69
+text = "Start"
+flat = true
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1373689574]
+layout_mode = 2
+theme_override_font_sizes/font_size = 69
+text = "Options"
+flat = true
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=180905793]
+layout_mode = 2
+theme_override_font_sizes/font_size = 69
+text = "Exit"
+flat = true
